@@ -1,0 +1,14 @@
+global:
+    scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+scrape_configs:
+-   job_name: 'prometheus'
+    static_configs:
+    -   targets: [ 'localhost:9090' ]
+-   job_name: 'spring'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+    -   targets: [ 'host.docker.internal:8080' ]
+
+#- job_name: 'node_exporter'
+#  static_configs:
+#  - targets: ['172.31.9.2:9100', '172.31.31.223:9100']

@@ -1,0 +1,28 @@
+server:
+    compression:
+        enabled: true
+        mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json
+spring:
+    data:
+        mongodb:
+            uri: mongodb://localhost:27018/test
+
+management:
+    endpoint:
+        metrics.enabled: true
+        prometheus.enabled: true
+        health:
+            show-components: always
+            show-details: always
+    endpoints:
+        web:
+            exposure:
+                include: "info, metrics, prometheus, health"
+
+    metrics:
+        tags:
+            application: ${spring.application.name}
+            #profile: test
+        export:
+            prometheus.enabled: true
+
