@@ -18,6 +18,7 @@ class UserController(
     @PostMapping
     @Timed
     fun save(@RequestBody userRequest: UserRequest) {
+        println("here")
         userService.save(userRequest)
     }
 

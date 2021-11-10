@@ -5,6 +5,7 @@ import org.redisson.api.RedissonClient
 import org.redisson.codec.TypedJsonJacksonCodec
 import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.stereotype.Service
+import java.security.InvalidParameterException
 import java.util.UUID
 
 @Service
@@ -15,7 +16,11 @@ class UserService(
     private val kafkaTemplate: KafkaTemplate<String, String>
 ) {
     fun save(userRequest: UserRequest) {
-        val map = redissonClient.getMap<String, User>("user", TypedJsonJacksonCodec(String::class.java, User::class.java, objectMapper))
+        if (userRequest.age < 0) {
+            throw InvalidParameterException()
+        }
+        val map =
+            redissonClient.getMap<String, User>("user", TypedJsonJacksonCodec(String::class.java, User::class.java, objectMapper))
         val user = User(
             UUID.randomUUID().toString(),
             userRequest.name,

@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
 @Configuration
-class Config {
+class RedisConfig {
     @Bean
     fun redissonClient(): RedissonClient {
         return Redisson.create(Config().apply {
