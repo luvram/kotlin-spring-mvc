@@ -9,7 +9,15 @@ This project is for studying the spring using by kotlin.
 docker-compose -f docker-compose.yml up -d
 ```
 
-### Reference
+### Test
+All servers are on localhost.
+- Number of Thread: 200
+- Ramp-up period(seconds): 1
+
+![tpsgraph](tps-graph.png "TPS Graph")
+
+
+
 
 
 
